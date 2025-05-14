@@ -61,4 +61,5 @@ jobs:
       - name: Build via Docker Compose
         uses: hoverkraft-tech/compose-action@v2.2.0
         with:
-          run: docker-compose -f docker-compose.yml --profile production up -d
+          compose-file: ./docker-compose.yml
+          up-flags: "--profile production -d"
