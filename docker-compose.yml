@@ -1,7 +1,7 @@
 services:
   backend:
     build: ./backend
-    image: docker-project-backend:latest
+    image: ${DOCKER_USER}/docker-project-backend:latest
     depends_on:
       db:
         condition: service_healthy
@@ -38,7 +38,7 @@ services:
       context: ./frontend
       args:
         VUE_APP_API_URL: "/api" 
-    image: docker-project-frontend:latest
+    image: ${DOCKER_USER}/docker-project-frontend:latest
     depends_on: 
       backend:
         condition: service_healthy         
