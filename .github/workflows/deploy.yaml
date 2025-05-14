@@ -73,4 +73,5 @@ jobs:
         uses: hoverkraft-tech/compose-action@v2.2.0
         with:
           compose-file: ./docker-compose.yml
-          up-flags: --profile production --pull always -d
+          compose-flags: --profile production
+          up-flags: --pull always -d
