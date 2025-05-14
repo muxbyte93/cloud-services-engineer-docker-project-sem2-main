@@ -16,9 +16,4 @@ vendor/
 .idea/
 .vscode/
 .DS_Store
-
-# Environment files
-.env
-
-# Archives
 *.tgz
