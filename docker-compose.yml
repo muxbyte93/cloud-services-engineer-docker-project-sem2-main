@@ -2,16 +2,6 @@ services:
   backend:
     build: ./backend
     image: ${DOCKER_USER}/docker-project-backend:latest
-    depends_on:
-      db:
-        condition: service_healthy
-    environment:
-      # Параметры подключения к БД
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_NAME: momodb
-      DB_USER: momouser
-      DB_PASSWORD: ${DB_PASSWORD}
     networks:
       - back_net
     # Ограничения ресурсов
@@ -59,24 +49,6 @@ services:
       retries: 3
     profiles: ["development", "production"]
 
-  db:
-    image: postgres:15-alpine
-    container_name: postgres-db
-    environment:
-      POSTGRES_USER: momouser
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: momodb
-    volumes:
-      - db_data:/var/lib/postgresql/data
-    networks:
-      - back_net
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "pg_isready", "-U", "momouser"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
   nginx:
     image: nginx:1.25-alpine
     depends_on:
@@ -93,10 +65,6 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro   # подключаем конфиг для прокси
     restart: unless-stopped
     profiles: ["production"]
-
-# Описание томов и сетей
-volumes:
-  db_data:
 
 networks:
   front_net:

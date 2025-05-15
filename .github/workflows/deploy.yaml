@@ -57,8 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     env:                    # переменные для docker-compose.yml
       DOCKER_USER: ${{ secrets.DOCKER_USER }}
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-
+    
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
