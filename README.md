@@ -7,7 +7,7 @@
 - **backend/** – Go REST API сервер.
 - **frontend/** – Vue.js одностраничное приложение (SPA).
 - **docker-compose.yml** – оркестрация контейнеров (backend, frontend, proxy).
-- **nginx.conf** – конфигурация Nginx для реверс-прокси (балансировка нагрузки).
+- **nginx.conf** – конфигурация Nginx для реверс-прокси.
 - **.github/workflows/deploy.yaml** – CI/CD workflow для сборки, сканирования и деплоя Docker-образов.
 - **README.md** – текущее описание и инструкции.
 
@@ -15,3 +15,8 @@
 
 Требования: Docker и Docker Compose установлены локально.
 
+Запустить приложение:
+```bash
+docker compose --profile production build
+docker compose --profile production up -d
+```

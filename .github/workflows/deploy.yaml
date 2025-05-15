@@ -55,7 +55,7 @@ jobs:
   run-with-docker-compose:
     name: Push Docker image to DockerHub
     runs-on: ubuntu-latest
-    env:                    # переменные для docker-compose.yml
+    env:
       DOCKER_USER: ${{ secrets.DOCKER_USER }}
     
     steps:
